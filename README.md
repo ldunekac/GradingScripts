@@ -24,7 +24,7 @@ Note: when downloading files form blackboard you need to get all the students su
 If you want you can take thoes lines out and hard code the config file found in the AssignmentFormat directory. My goal was to have a config file for each class I was grading but I never got around to it. 
 
 evulateGrade.py:
-This script needs to be ran in the student directory with the grad.txt file. The grade.text file is the rubric file that is formated for that student. It will add up all the students points and make a "Total:" line for their total score. Then if you have any notes for the student put them belwo the notes line. Never touch the notes line. That needs to be just like that so I can parse the file later.
+This script needs to be ran in the student directory with the grad.txt file. The grade.text file is the rubric file that is formated for that student. It will add up all the students points and make a "Total:" line for their total score. Then if you have any notes for the student put them below the comment line. Never touch the notes line. That needs to be just like that so I can parse the file later.
 
 nextToGrade.py:
 	This script needs to be ran in the assignment workspace. It goes into each student directory and checks to see if they have recevied a final score. It wil print out the first student that has not been graded.
@@ -32,5 +32,59 @@ nextToGrade.py:
 generateSubmissionFile.py:
 	This takes the csv file for the assignment that is downloaded from blackboard and fills in all the students grades and comments and will output the file "upload.csv". This file can be given to blackboad and all the studets and comments will be submitted. 
 	WARNING: This will overwrite all information with that assignemnt. So if you modified a students grade inside of blackboard, DON'T resubmit the upload.txt file. 
+
+Rubric file:
+The rubric file is setup in this format:
+[pointsAwardedToStudent/TotalPointsForTask] Task discription
+
+my parser will only look at thoes lines for determining the students total score. White space is ignored Here is an example:
+---------------start of file
+[10 points] This line will be ignored when figuring out total score
+	[5/5] task1
+	[2/2] task2
+	[3/3] task3
+
+[4/4] other task
+--------------- end of file
+
+when format.py is ran this file will become grade.txt and will look like this
+
+---------------grade.txt
+studentid
+[10 points] This line will be ignored when figuring out total score
+	[5/5] task1
+	[2/2] task2
+	[3/3] task3
+
+[4/4] other task
+================
+[-2/0] Late // Points taken off for being late
+===============
+Total: 
+---- Comments -----
+//all text below here the student will see
+----------------end of file
+
+
+When evulateGrade .py is ran:
+---------------grade.txt
+
+studentid
+[10 points] This line will be ignored when figuring out total score
+	[3/5] task1
+	[1.5/2] task2
+	[2/3] task3
+
+[4/4] other task
+================
+[-2/0] Late 
+[3/0] Extra credit. // Something you added in to the assignment after it was generated
+===============
+Total: [11.5/14] // the 11.5 will be submitted as their grade in blackboard
+---- Comments -----
+ task1 needs work // this will be showned to the student in the comments section on blackboard
+
+----------------end of file
+
 
 	The rest of the .py files in the src directory are just some scripts to help me grade different assignemtns feel free to change them.

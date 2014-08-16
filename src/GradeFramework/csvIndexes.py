@@ -1,0 +1,11 @@
+LAST_NAME           = 0
+FIRST_NAME          = 1
+USER_NAME           = 2
+STUDENT_ID          = 3
+LAST_ACCESS         = 4
+AVAILABILITY        = 5
+SCORE               = 6
+GRADING_NOTES       = 7
+NOTE_FORMAT         = 8
+FEEDBACK_TO_USER    = 9
+FEEDBACK_FORMAT     = 10

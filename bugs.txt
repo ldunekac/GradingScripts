@@ -1,0 +1,4 @@
+* generateSubmissionFile.py - Renames assignment column.  
+    This might be a artifact of the downloaded csv.  Still needs fixing.
+
+

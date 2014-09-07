@@ -179,9 +179,14 @@ Modified generateSubmissionFile.py (gsf) to copy rubric elements
 
 ***
 
-## Grade Notes
-### Unit 1
-**joh** 
-- only submitted part 1 on time
-- turned in part 2 before second deadline
+## Git Notes
 
+``` bash
+To submit changes form the command line you do:
+git add <directory/file>            # manage file(s) under git 
+git rm [-r] <directory/file>        # remove file(s) from git
+git commit -m "Comment. Describe the changes you made"
+git push origin master
+
+You can use the "git status" to see what changes you have done. You can also use the command "git add ." This stage all the files and directories from your current directory.
+```

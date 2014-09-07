@@ -19,7 +19,8 @@ class GradeManager:
                 first = False
             else:
                 self.makeStudent(row)
-        self.header[0] = self.header[0][2:-1]
+                
+        self.header[0] = self.header[0][4:-1]
         self.getGradeInformation()
         self.makeCSV()
 

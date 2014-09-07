@@ -21,6 +21,7 @@ class Student:
 
     def addComment(self, comment):
         self.studentInformation[csvIndexes.FEEDBACK_TO_USER] = comment
+        print comment
 
     def addZero(self):
         if self.studentInformation[csvIndexes.SCORE] == '':
